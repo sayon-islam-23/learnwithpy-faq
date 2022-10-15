@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm, BlogPostForm
 from django.views.generic import UpdateView
 from django.contrib import messages
-import pyautogui as pag
+#import pyautogui as pag
 from django.views.decorators.csrf import csrf_exempt
 
 
