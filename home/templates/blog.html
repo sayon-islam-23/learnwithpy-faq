@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs {% endblock %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<section class="py-5 text-center border border-dark" style="background-color: rgb(220, 220, 253);">
+  <div class="row py-lg-5" style="justify-content: center; margin: auto;">
+    <div class="col-lg-6 col-md-8">
+      <h1 class="fw-light">Learn-With-Py QNA</h1>
+      <p class="lead text-muted mx-auto">Ask and resolve your doubts from the experts. Also help others to solve their queries.</p>
+      <p>
+        <a href="http://learn-with-py.infinityfreeapp.com/" class="btn btn-success my-2 mx-2">Home Page</a>
+      </p>
+    </div>
+  </div>
+</section>
+<div class="container mt-5 mb-3">
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-lg-4 my-4" data-aos="zoom-in">
+            <div class="card shadow" style="width: 20rem; height: 31rem; border:2px solid black">
+                <img src="/media/{{post.image}}" class="card-img-top" alt="image" height="250px" style="border-bottom:2px solid black">
+                <div class="card-body">
+                  <br>
+                  <h5 class="card-title">{{post.query}} <br><small class="font-weight-bold" style="color:blue;">by {{post.author}}</small></h5>
+                  <p class="card-text">{{post.details| truncatechars:210}}</p>
+                  <a href="blog/{{post.tagline}}" class="btn btn-primary btn-sm"> Answer Query {% if user.is_superuser %}<a href="delete_blog_post/{{post.tagline}}/" class="btn btn-danger mx-4 btn-sm">Delete Blog</a>{% endif %}</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block js %} 
+<script></script>
+{% endblock %}
